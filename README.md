@@ -13,6 +13,7 @@ Ans: Hot Reload:
 
 Example:
 Actual code:
+<sub>
 import 'package:flutter/material.dart';
 
 void main() {
@@ -79,9 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-<b>Updated Code<b>
-
+</sub>
+[Updated Code]
+<sub>
 import 'package:flutter/material.dart';
 
 void main() {
@@ -150,5 +151,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 }
+</sub>
 Explanation:
 In above example we are changing text of Text widget whose key is updatedString from "Original Text message" to "Updated Text message" and our count variable value is 4. So when we hot reload it will update the text without affecting the state value of counter. 
