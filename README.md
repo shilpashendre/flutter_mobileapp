@@ -121,5 +121,21 @@ Platform iOS:
         }
 @end    
 
-## What do you know about eventloop and what is the relationship with
+## What do you know about eventloop and what is the relationship with flutter?
 ### Ans
+An Isolate runs Dart code on a single thread. Synchronous code like
+
+        print('hello');
+is run immediately and can't be interrupted.
+
+An Isolate also has an Event Loop that it uses to schedule asynchronous tasks on. Asynchronous doesn't mean that these tasks are run on a separate thread. They are still run on the same thread. Asynchronous just means that they are scheduled for later.
+
+The Event Loop runs the tasks that are scheduled in what is called an Event Queue. You can put a task in the Event Queue by creating a future like this:
+
+        Future(() => print(hello));
+The print(hello) task will get run when the other tasks ahead of it in the Event Queue have finished. All of this is happening on the same thread, that is, the same Isolate.
+
+Some tasks don't get added to the Event Queue right away, for example
+
+Future.delayed(Duration(seconds: 1), () => print('hello'));
+which only gets added to the queue after a delay of one second.
