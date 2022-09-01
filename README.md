@@ -139,3 +139,21 @@ Some tasks don't get added to the Event Queue right away, for example
 
 Future.delayed(Duration(seconds: 1), () => print('hello'));
 which only gets added to the queue after a delay of one second.
+
+### 3. Identify the problem in the following code block and correct it.
+
+ Future<String> LongOperationMethod() async {
+    var counting = 0;
+    for (var i = 1; i <= 1000000000; i++) {
+      counting = i;
+    }
+    return "$counting! I print the value";
+  }
+  ## Ans:
+  In tha above code their is no need of for-loop. I can directly assign the counting value and use it as show below.
+  # Future<String> LongOperationMethod() async {
+    var counting = 1000000000;
+    
+    return "$counting! I print the value";
+  }
+
